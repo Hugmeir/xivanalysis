@@ -1,6 +1,6 @@
 import {Trans} from '@lingui/react'
 import ACTIONS from 'data/ACTIONS'
-import {Event} from 'event'
+import {Event, Events} from 'event'
 import {filter} from 'parser/core/filter'
 import {dependency} from 'parser/core/Injectable'
 import {Actors} from 'parser/core/modules/Actors'
@@ -49,6 +49,15 @@ export class BLUOverheal extends Overheal {
 		this.addEventHook(filter<Event>().type('complete'), this.onCompleteExtra)
 		super.initialise()
 		this.addEventHook(filter<Event>().type('complete'), this.onCompleteExtra)
+	}
+
+	override considerHeal(event: Events['heal'], _pet: boolean = false): boolean {
+		// Filter out Devour; it's going to be used on cooldown by tanks, and either
+		// as a DPS button or occasionally as a mechanic button (e.g. A8S Gavel)
+		if (event.cause.type === 'action') {
+			return event.cause.action !== this.data.actions.DEVOUR.id
+		}
+		return true
 	}
 
 	private onCompleteExtra() {
