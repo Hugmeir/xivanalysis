@@ -16,6 +16,7 @@ import {RevengeBlast} from './RevengeBlast'
 import {Swiftcast} from './Swiftcast'
 import {TripleTrident} from './TripleTrident'
 import {BLUWeaving} from './Weaving'
+import {StatusTimeline} from './StatusTimeline'
 
 export default [
 	Defensives,
@@ -34,6 +35,7 @@ export default [
 	RevengeBlast,
 	BLURaidBuffs,
 	BLUOverheal,
+	StatusTimeline,
 	TripleTrident,
 	DroppedBuffs,
 ]
