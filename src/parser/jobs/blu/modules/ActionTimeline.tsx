@@ -16,7 +16,8 @@ export class ActionTimeline extends CoreActionTimeline {
 		'FEATHER_RAIN',
 		'ERUPTION',
 		['PHANTOM_FLURRY', 'PHANTOM_FLURRY_KICK'],
-		['QUASAR', 'J_KICK'],
+		'QUASAR',
+		'J_KICK',
 		{
 			label: 'Raid Buffs',
 			content: [
