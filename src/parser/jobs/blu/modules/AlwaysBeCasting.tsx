@@ -5,6 +5,7 @@ import {Event, Events} from 'event'
 import {EventHook} from 'parser/core/Dispatcher'
 import {filter, noneOf} from 'parser/core/filter'
 import {dependency} from 'parser/core/Injectable'
+import {History} from 'parser/core/modules/ActionWindow/History'
 import {Actors} from 'parser/core/modules/Actors'
 import {AlwaysBeCasting as CoreAlwaysBeCasting} from 'parser/core/modules/AlwaysBeCasting'
 import Suggestions, {TieredSuggestion, SEVERITY} from 'parser/core/modules/Suggestions'
@@ -29,6 +30,7 @@ interface PhantomFlurryWindow {
 }
 
 export class AlwaysBeCasting extends CoreAlwaysBeCasting {
+	private diamondBackHistory: History<boolean> = new History<boolean>(() => (true))
 	private phantomFlurryHistory: PhantomFlurryWindow[] = []
 	private currentPhantomFlurry: PhantomFlurryWindow | undefined = undefined
 	private phantomFlurryInterruptingActionHook?: EventHook<Events['action']>
@@ -51,6 +53,8 @@ export class AlwaysBeCasting extends CoreAlwaysBeCasting {
 			.action(this.data.actions.PHANTOM_FLURRY_KICK.id)
 			.type('action')
 
+		const diamondBackFilter = playerFilter.status(this.data.statuses.DIAMONDBACK.id)
+
 		const surpanakhaCastFilter = playerFilter
 			.action(this.data.actions.SURPANAKHA.id)
 			.type('action')
@@ -59,6 +63,15 @@ export class AlwaysBeCasting extends CoreAlwaysBeCasting {
 		this.addEventHook(phantomFlurryStatusFilter, this.onRemovePhantomFlurry)
 		this.addEventHook(phantomFlurryKick, this.onPhantomFlurryFinalKick)
 		this.addEventHook(surpanakhaCastFilter, this.onCastSurpanakha)
+		this.addEventHook(diamondBackFilter.type('statusApply'), this.onDiamondBackApply)
+		this.addEventHook(diamondBackFilter.type('statusRemove'), this.onDiamondBackRemove)
+	}
+
+	private onDiamondBackApply(event: Events['statusApply']) {
+		this.diamondBackHistory.openNew(event.timestamp)
+	}
+	private onDiamondBackRemove(event: Events['statusRemove']) {
+		this.diamondBackHistory.closeCurrent(event.timestamp)
 	}
 
 	private onCastSurpanakha() {
@@ -142,6 +155,23 @@ export class AlwaysBeCasting extends CoreAlwaysBeCasting {
 
 	override onComplete() {
 		super.onComplete()
+
+		this.diamondBackHistory.closeCurrent(this.parser.pull.timestamp + this.parser.pull.duration)
+		const diamondBackTimeMs = this.diamondBackHistory.entries.reduce((acc, e) => {
+			return acc + ((e.end ?? e.start) - e.start)
+		}, 0)
+		const diamondBackSeconds = Math.ceil(diamondBackTimeMs / 1000)
+		this.suggestions.add(new TieredSuggestion({
+			icon: this.data.actions.DIAMONDBACK.icon,
+			content: <Trans id="blu.diamondback.time.content">
+				The ABC report will count time spent under <DataLink action="DIAMONDBACK" /> as GCD uptime, but you should still aim to minimize this, since it means dropping damaging GCDs.
+			</Trans>,
+			why: <Trans id="blu.diamondback.time.why">
+				<Plural value={diamondBackSeconds ?? 0} one="# second" other="# seconds" /> spent in Diamondback.
+			</Trans>,
+			tiers: {1: SEVERITY.MINOR},
+			value: diamondBackSeconds,
+		}))
 
 		// Since we were already tracking Phantom Flurry, go ahead and take
 		// the chance to track if they dropped any damage ticks.
