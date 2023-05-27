@@ -163,6 +163,7 @@
   "blm.triplecast.suggestions.overwrote-triplecasts.why": "Du hast <0/> überschrieben.",
   "blu.about.description": "Dies ist eine beschränkte Analyse für einen beschränkten Job. Sie ist noch nicht bereit, freut euch darauf.\n\nDiese Analyse wird sich auf DoTs, Uptime und dem richtigem Gebrauch von [~action/BRISTLE], [~action/MOON_FLUTE] und [~action/SURPANAKHA] konzentrieren.\n",
   "blu.about.description.warning": "Dieses Modul wird noch entwickelt und ist noch nicht bereit zur Veröffentlichung.",
+  "blu.always-cast.description": "",
   "blu.buffs.buff_time": "",
   "blu.buffs.buff_yours": "",
   "blu.buffs.overwritten.content": "",

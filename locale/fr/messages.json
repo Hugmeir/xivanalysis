@@ -163,6 +163,7 @@
   "blm.triplecast.suggestions.overwrote-triplecasts.why": "Vous avez supplanté votre <0/>.",
   "blu.about.description": "Il s'agit d'un analyseur limité pour un job limité. Il n'est pas encore prêt, mais merci de votre compréhension.\n\nCet analyseur se concentrera sur les DoTs, le temps de fonctionnement et l'utilisation correcte de [~action/BRISTLE],[~action/MOON_FLUTE], et [~action/SURPANAKHA].\n",
   "blu.about.description.warning": "Ce module est actuellement en développement et n'est donc pas encore prête pour le public.",
+  "blu.always-cast.description": "",
   "blu.buffs.buff_time": "",
   "blu.buffs.buff_yours": "",
   "blu.buffs.overwritten.content": "",

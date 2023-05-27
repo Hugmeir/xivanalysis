@@ -163,6 +163,7 @@
   "blm.triplecast.suggestions.overwrote-triplecasts.why": "你覆盖了<0/>。",
   "blu.about.description": "这只是一个对于有限职业的有限分析。它还未准备就绪，敬请期待。\n\n该项分析将会着眼于持续伤害，技能覆盖率以及 [~action/BRISTLE] 的正确使用[~action/MOON_FLUTE]，和[~action/SURPANAKHA]。",
   "blu.about.description.warning": "这个模块正在开发，尚未发布。",
+  "blu.always-cast.description": "",
   "blu.buffs.buff_time": "",
   "blu.buffs.buff_yours": "",
   "blu.buffs.overwritten.content": "",

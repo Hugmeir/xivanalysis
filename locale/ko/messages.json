@@ -163,6 +163,7 @@
   "blm.triplecast.suggestions.overwrote-triplecasts.why": "<0/> 기술을 덮어썼습니다.",
   "blu.about.description": "리미트 잡을 위한 리미티드 분석기는 아직 완전하지 않습니다. 추후 업데이트를 기대해주세요.\n\n이 분석기는 지속 피해와 전투 업타임, 그리고 [~action/BRISTLE], [~action/MOON_FLUTE] 그리고 [~action/SURPANKHA] 기술의 올바른 사용을 점검해줍니다.\n",
   "blu.about.description.warning": "이 모듈은 개발 중이며, 아직 공개될 준비가 되지 않았습니다.",
+  "blu.always-cast.description": "",
   "blu.buffs.buff_time": "",
   "blu.buffs.buff_yours": "",
   "blu.buffs.overwritten.content": "",

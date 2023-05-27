@@ -163,6 +163,7 @@
   "blm.triplecast.suggestions.overwrote-triplecasts.why": "<0/>は上書きされました。",
   "blu.about.description": "これはリミテッドジョブ限定のアナライザーです。まだ完成していませんが、楽しみにしていてください。\nこのアナライザーは、DoT、GCD稼働率、[~action/BRISTLE]、[~action/MOON_FLUTE]、[~action/SURPANAKHA] の適切な使用法に主眼を置いています。\n",
   "blu.about.description.warning": "このモジュールは開発中で、まだ公開できません。",
+  "blu.always-cast.description": "",
   "blu.buffs.buff_time": "",
   "blu.buffs.buff_yours": "",
   "blu.buffs.overwritten.content": "",
