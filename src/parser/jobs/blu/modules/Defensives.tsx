@@ -7,12 +7,14 @@ import {dependency} from 'parser/core/Injectable'
 import {Defensives as CoreDefensives} from 'parser/core/modules/Defensives'
 import Suggestions, {SEVERITY, Suggestion} from 'parser/core/modules/Suggestions'
 import React from 'react'
+import {DISPLAY_ORDER} from './DISPLAY_ORDER'
 
 // Defensive suggestions are a bit different for each mimickry.
 // And since we are already checking for mimickry, add a suggestion
 // if they don't have one running!
 
 export class Defensives extends CoreDefensives {
+	static override displayOrder = DISPLAY_ORDER.DEFENSIVES
 
 	// Basic defensives.  Not everyone is going to have the spell slots for Magic Hammer,
 	// so this might be a bit of noise, sadly.

@@ -7,6 +7,7 @@ import {Actors} from 'parser/core/modules/Actors'
 import {TieredSuggestion, SEVERITY} from 'parser/core/modules/Suggestions'
 import {Weaving, Weave} from 'parser/core/modules/Weaving'
 import React from 'react'
+import {DISPLAY_ORDER} from './DISPLAY_ORDER'
 
 const TO_MILLISECONDS = 1000
 const MAX_SURPANAKHA_CHARGES = 4
@@ -28,6 +29,7 @@ const MAX_ALLOWED_MULTIWEAVE_DURING_MOON_FLUTE = 6
 //
 
 export class BLUWeaving extends Weaving {
+	static override displayOrder = DISPLAY_ORDER.WEAVING
 	private badSurpanakhaSequence = 0
 
 	@dependency private actors!: Actors
